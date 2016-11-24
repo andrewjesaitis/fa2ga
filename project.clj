@@ -5,5 +5,6 @@
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/tools.cli "0.3.5"]
-                 [clj-fasta "0.2.2"]]
+                 [clj-fasta "0.2.2"]
+                 [org.clojure/data.json "0.2.6"]]
   :main fa2ga.core)

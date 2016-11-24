@@ -1,6 +1,7 @@
 (ns fa2ga.core
   (:require [clj-fasta.core :as fa])
   (:require [clojure.java.io :as io])
+  (:require [clojure.data.json :as json])
   (:import java.util.zip.GZIPInputStream))
 
 (defn parse-fasta
@@ -12,5 +13,5 @@
 
 (defn -main
   [input & rest]
-  (print (parse-fasta input))
+  (print (json/write-str (parse-fasta input)))
   )
