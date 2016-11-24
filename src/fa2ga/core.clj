@@ -4,9 +4,15 @@
   (:require [clojure.data.json :as json])
   (:import java.util.zip.GZIPInputStream))
 
+(defn is-gzip
+  [file]
+  (some? (re-find #".*\.gz$" file)))
+
 (defn parse-fasta
   [fa-file]
-  (with-open [r (-> fa-file io/input-stream GZIPInputStream. io/reader)]
+  (with-open [r (if (is-gzip fa-file)
+                  (-> fa-file io/input-stream GZIPInputStream. io/reader)
+                  (-> fa-file io/reader))]
     (->> (fa/fasta-seq r)
          first))
   )
